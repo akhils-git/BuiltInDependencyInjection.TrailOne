@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace BuiltInDependencyInjection.TrailOne
 {
-    public class UserInterface
+    public class UserInterface : IUserInterface
     {
         public readonly IBusiness _business;
         public UserInterface(IBusiness userInterface)
@@ -23,9 +24,13 @@ namespace BuiltInDependencyInjection.TrailOne
             _business.Login(username, password);
         }
     }
-  
+    public interface IUserInterface
+    {
+        public void DataRead();
+    }
 
-    public class Business: IBusiness
+
+    public class Business : IBusiness
     {
         public readonly IFileDataStorage _fileStorage;
         public Business(IFileDataStorage fileStorage)
@@ -37,33 +42,72 @@ namespace BuiltInDependencyInjection.TrailOne
             _fileStorage.Store(username, password);
         }
 
-    }   
-    
+    }
+
     public interface IBusiness
     {
         public void Login(string username, string password);
     }
 
 
-    public class FileDataStorage: IFileDataStorage
+    public class FlatFileDataStorage : IFileDataStorage
     {
+
         public void Store(string username, string password)
         {
-          string[] data = File.ReadAllLines(@"C:\Data\FileStorage.txt");
-            if (data[0]== username && data[1]== password)
+            //Move back to Project Dir and step up to "DataStorage"
+            string filePath = System.IO.Path.GetFullPath(".\\..\\..\\..\\");
+
+            // Data read from file
+            string[] data = File.ReadAllLines(filePath + @"\DataStorage\FileStorage.txt");
+
+
+            if (data[0] == username && data[1] == password)
             {
-                Console.WriteLine("User login done");
+                Console.WriteLine("Login success.");
             }
             else
             {
-                Console.WriteLine("Fail");
+                Console.WriteLine("Login Fail");
             }
-          
+
         }
     }
 
     public interface IFileDataStorage
     {
         public void Store(string username, string password);
+    }
+
+    public class JsonFileDataStorage : IFileDataStorage
+    {
+
+        public void Store(string username, string password)
+        {
+            //Move back to Project Dir and step up to "DataStorage"
+            string filePath = System.IO.Path.GetFullPath(".\\..\\..\\..\\");
+
+            // Data read from file
+            string fileJsonData = File.ReadAllText(filePath + @"\DataStorage\JsonStorage.json");
+
+
+            User user = JsonSerializer.Deserialize<User>(fileJsonData);
+
+            if (user.Username == username && user.Password == password)
+            {
+                Console.WriteLine("Login success.");
+            }
+            else
+            {
+                Console.WriteLine("Login Fail");
+            }
+
+        }
+    }
+
+    public class User
+    {
+        public string Username { get; set; }
+        public string Password { get; set; }
     }
 }
