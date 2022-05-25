@@ -1,10 +1,9 @@
-﻿// See https://aka.ms/new-console-template for more information
-using BuiltInDependencyInjection.TrailOne;
+﻿using BuiltInDependencyInjection.TrailOne;
 using Microsoft.Extensions.DependencyInjection;
 
 Console.WriteLine("User Login");
 
-
+// loop help repeat menu
 while (1==1)
 {
     #region DependencyInjection
