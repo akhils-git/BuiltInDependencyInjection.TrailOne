@@ -5,9 +5,14 @@ VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuiltInDependencyInjection.TrailOne", "BuiltInDependencyInjection.TrailOne\BuiltInDependencyInjection.TrailOne.csproj", "{6D9442E6-BC38-48F6-9771-89FF3490AC6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WithOutDependencyInjection", "WithOutDependencyInjection\WithOutDependencyInjection.csproj", "{6EFFF062-D80F-406C-8B06-D2E94B00C58B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WithOutDependencyInjection", "WithOutDependencyInjection\WithOutDependencyInjection.csproj", "{6EFFF062-D80F-406C-8B06-D2E94B00C58B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleTonScopedAndTransient", "SingleTonScopedAndTransient\SingleTonScopedAndTransient.csproj", "{DC83036A-4BB7-461B-990A-E7A3ED84555F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SingleTonScopedAndTransient", "SingleTonScopedAndTransient\SingleTonScopedAndTransient.csproj", "{DC83036A-4BB7-461B-990A-E7A3ED84555F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EAC88BF8-7FC0-4EFF-ADCA-BD5CF537B618}"
+	ProjectSection(SolutionItems) = preProject
+		Read me.txt = Read me.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
