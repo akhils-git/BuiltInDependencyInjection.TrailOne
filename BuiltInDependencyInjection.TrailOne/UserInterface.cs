@@ -32,8 +32,8 @@ namespace BuiltInDependencyInjection.TrailOne
 
     public class Business : IBusiness
     {
-        public readonly IFileDataStorage _fileStorage;
-        public Business(IFileDataStorage fileStorage)
+        public readonly IDataStorage _fileStorage;
+        public Business(IDataStorage fileStorage)
         {
             _fileStorage = fileStorage;
         }
@@ -50,7 +50,7 @@ namespace BuiltInDependencyInjection.TrailOne
     }
 
 
-    public class FlatFileDataStorage : IFileDataStorage
+    public class FlatFileDataStorage : IDataStorage
     {
 
         public void Store(string username, string password)
@@ -74,14 +74,13 @@ namespace BuiltInDependencyInjection.TrailOne
         }
     }
 
-    public interface IFileDataStorage
+    public interface IDataStorage
     {
         public void Store(string username, string password);
     }
 
-    public class JsonFileDataStorage : IFileDataStorage
+    public class JsonFileDataStorage : IDataStorage
     {
-
         public void Store(string username, string password)
         {
             //Move back to Project Dir and step up to "DataStorage"
@@ -102,6 +101,13 @@ namespace BuiltInDependencyInjection.TrailOne
                 Console.WriteLine("Login Fail");
             }
 
+        }
+    }
+    public class DatabaseDataStorage : IDataStorage
+    {
+        public void Store(string username, string password)
+        {
+            
         }
     }
 
