@@ -27,7 +27,6 @@ namespace WithOutDependencyInjection
             flatFileDataStorag.Store(username, password);
         }
     }
-
     public class FlatFileDataStorag
     {
         public void Store(string username, string password)
@@ -37,7 +36,6 @@ namespace WithOutDependencyInjection
 
             // Data read from file
             string[] data = File.ReadAllLines(filePath + @"\DataStorage\FileStorage.txt");
-
 
             if (data[0] == username && data[1] == password)
             {

@@ -9,10 +9,11 @@ namespace BuiltInDependencyInjection.TrailOne
 {
     public class UserInterface : IUserInterface
     {
+      
         public readonly IBusiness _business;
-        public UserInterface(IBusiness userInterface)
+        public UserInterface(IBusiness business)
         {
-            _business = userInterface;
+            _business = business;
         }
         public void DataRead()
         {
@@ -28,8 +29,7 @@ namespace BuiltInDependencyInjection.TrailOne
     {
         public void DataRead();
     }
-
-
+    
     public class Business : IBusiness
     {
         public readonly IDataStorage _fileStorage;
@@ -43,13 +43,10 @@ namespace BuiltInDependencyInjection.TrailOne
         }
 
     }
-
     public interface IBusiness
     {
         public void Login(string username, string password);
     }
-
-
     public class FlatFileDataStorage : IDataStorage
     {
 
@@ -73,12 +70,10 @@ namespace BuiltInDependencyInjection.TrailOne
 
         }
     }
-
     public interface IDataStorage
     {
         public void Store(string username, string password);
     }
-
     public class JsonFileDataStorage : IDataStorage
     {
         public void Store(string username, string password)
@@ -110,7 +105,6 @@ namespace BuiltInDependencyInjection.TrailOne
             
         }
     }
-
     public class User
     {
         public string Username { get; set; }
